@@ -82,14 +82,17 @@ def print_stats(split: str, results: list) -> None:
         print(f"  {name:<15}{pct_img:>8.1f}%{pct_px:>10.3f}%")
 
 
-def run(cfg: dict, workers: int) -> None:
-    """Punto de entrada: lo llama el orquestador (app/orchestrator.py)."""
+def run(cfg: dict, workers: int, limit: int | None = None) -> None:
+    """Punto de entrada: lo llama el orquestador (app/orchestrator.py).
+    `limit` = procesar solo las N primeras fotos de cada grupo (None = todas); sirve para pruebas."""
     for split in SPLITS:
         img_dir = os.path.join(cfg["paths"]["raw"], "images", split)
         if not os.path.isdir(img_dir):
             print(f"[{split}] no existe {img_dir}, se omite.")
             continue
         names = list_images(img_dir)
+        if limit:
+            names = names[:limit]
         ensure_dirs(*(os.path.join(cfg["paths"]["processed"], split, sub) for sub in ("images", "masks")))
 
         # Varias fotos en paralelo (un proceso por núcleo de CPU).

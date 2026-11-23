@@ -105,10 +105,10 @@ class Orchestrator:
         convert.run(src=src, fmt=format, raw=raw, inputs=inputs, test_frac=test_frac,
                             seed=seed, copy=copy, inspect_only=inspect)
 
-    def _run_prepare(self, cfg, workers, config):
+    def _run_prepare(self, cfg, workers, config, limit):
         from data_prep import prepare
-        print(f"Config: {config} | workers: {workers}")
-        prepare.run(cfg, workers)
+        print(f"Config: {config} | workers: {workers} | fotos por grupo: {limit or 'todas'}")
+        prepare.run(cfg, workers, limit=limit)
 
     def _run_visualize(self, cfg, split, n, name, augmented, config):
         from data_prep import visualize

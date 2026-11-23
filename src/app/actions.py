@@ -56,6 +56,9 @@ ACTIONS = {
             dict(name="workers", flag="--workers", type=int, default=max(1, (os.cpu_count() or 2) - 1),
                  help="procesos en paralelo",
                  prompt="Procesos en paralelo (más = más rápido, pero usa más CPU)"),
+            dict(name="limit", flag="--limit", type=int, default=None,
+                 help="procesar solo las N primeras fotos de cada grupo (para pruebas)",
+                 prompt="Procesar solo N fotos por grupo (Enter = todas)"),
         ],
     },
     "visualize": {

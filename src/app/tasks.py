@@ -53,7 +53,7 @@ TASKS = [
         "action": "prepare",
         "fixed": {},
         "ask": [],
-        "advanced": ["config", "workers"],
+        "advanced": ["limit", "config", "workers"],
     },
     {
         "title": "Revisar las máscaras (a ojo)",

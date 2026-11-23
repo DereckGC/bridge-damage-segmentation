@@ -27,6 +27,8 @@ class DataRules(BaseValidator):
     def _validate_prepare(self, p: dict) -> dict:
         cfg = self._load_config(p["config"], ["paths.raw", "paths.processed", "data.long_side"])
         self._int_at_least(p["workers"], "--workers", 1, high=os.cpu_count() or 1)
+        if p["limit"] is not None:
+            self._int_at_least(p["limit"], "--limit", 1)
         if cfg:
             self._int_at_least(cfg["data"]["long_side"], "data.long_side (config)", 256, high=4096)
             raw = Path(cfg["paths"]["raw"])
