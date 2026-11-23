@@ -1,0 +1,25 @@
+# Dependencias del proyecto (Python 3.10 - 3.12).
+#
+# PyTorch NO está en esta lista: su versión con GPU se instala aparte, ANTES que este archivo,
+# desde el repositorio de PyTorch (en PyPI, para Windows, solo está la versión sin GPU):
+#
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu132
+#
+# (cu132 = CUDA 13.2; usa cu130 o cu128 si tu driver es más antiguo. Ver README.)
+# Después:
+#
+#   pip install -r requirements.txt
+
+# Modelo
+segmentation-models-pytorch>=0.5
+timm>=1.0
+
+# Datos e imágenes
+albumentations>=2.0
+opencv-python-headless>=4.9
+numpy
+pillow
+
+# Utilidades
+pyyaml
+tqdm

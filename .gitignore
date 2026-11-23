@@ -1,0 +1,63 @@
+# ------------------------------------------------------------------
+# Datos y resultados: pesados y/o con licencia propia. NUNCA se suben.
+# (dacl10k es CC BY-NC 4.0: no se puede redistribuir en este repositorio)
+# Nota: en .gitignore, "#" solo es comentario al INICIO de la línea.
+# ------------------------------------------------------------------
+# Datasets descargados (paths.downloads) y su nombre anterior
+dataset/
+descargas/
+# data/raw y data/processed (se regeneran con el menú)
+data/
+# Pesos entrenados (best.pt, last.pt) y log.csv
+models/
+# Fotos a analizar y resultados / imágenes de revisión
+inputs/
+outputs/
+# Archivos retirados pendientes de borrar
+_to_delete/
+
+# Pesos y archivos de modelos sueltos, por si quedan fuera de models/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+
+# Comprimidos (p. ej. el zip de un dataset)
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# ------------------------------------------------------------------
+# Entornos virtuales de Python
+# ------------------------------------------------------------------
+.venv/
+.venv-*/
+venv/
+env/
+
+# ------------------------------------------------------------------
+# Archivos generados por Python
+# ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Cachés (p. ej. la de huggingface_hub dentro de la descarga)
+.cache/
+
+# ------------------------------------------------------------------
+# Editores y sistema operativo
+# ------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Variables de entorno / credenciales (p. ej. tokens de Hugging Face)
+.env

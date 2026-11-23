@@ -1,0 +1,37 @@
+paths:
+  raw: data/raw
+  processed: data/processed
+  models: models
+  inputs: inputs
+  outputs: outputs
+  downloads: dataset     # datasets descargados, sin convertir (no se suben a git)
+
+data:
+  long_side: 1024        # lado largo de las fotos en data/processed (prepare_data)
+  crop: 512              # recorte con el que se entrena y tamaño de ventana al predecir (múltiplo de 32)
+
+model:
+  encoder: tu-convnext_tiny   # para 6 GB de GPU; con más memoria: tu-convnext_small / tu-convnext_base
+  pretrained: true            # empezar con los pesos de ImageNet (muy recomendado)
+
+train:
+  epochs: 60             # máximo de épocas (puede parar antes por "patience")
+  batch_size: 4          # fotos por lote; bájalo a 2 si aparece "CUDA out of memory"
+  lr: 3.0e-4             # velocidad de aprendizaje del decoder
+  encoder_lr_mult: 0.1   # el encoder (preentrenado) aprende 10 veces más despacio
+  weight_decay: 0.01
+  warmup_epochs: 2       # épocas de "calentamiento": el lr sube poco a poco al inicio
+  num_workers: 4         # procesos que preparan los lotes mientras la GPU entrena
+  amp: true              # precisión mixta: más rápido y usa menos memoria de GPU
+  grad_accum: 1          # acumular N lotes antes de ajustar (lote efectivo = batch_size x N)
+  grad_clip: 1.0         # limita ajustes demasiado bruscos
+  patience: 12           # parar si val no mejora en este número de validaciones seguidas
+  val_every: 1           # validar cada N épocas
+  val_max_images: null   # validar solo con N fotos de val (null = todas); útil para pruebas rápidas
+  bce_weight: 1.0        # peso de la pérdida BCE
+  dice_weight: 1.0       # peso de la pérdida Dice
+  seed: 42               # semilla: hace comparables dos entrenamientos con la misma config
+
+predict:
+  threshold: 0.5
+  min_area: 64

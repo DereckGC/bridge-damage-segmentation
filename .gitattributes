@@ -1,0 +1,11 @@
+# Normaliza los saltos de línea: en el repositorio se guardan como LF y cada sistema
+# (Windows CRLF, Linux/macOS LF) los convierte al hacer checkout. Evita diffs falsos
+# cuando se edita el proyecto desde distintos sistemas o editores.
+* text=auto
+
+# Archivos binarios: nunca convertir.
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.npz binary
+*.pt binary
