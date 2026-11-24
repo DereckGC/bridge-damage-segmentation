@@ -239,10 +239,3 @@ regenerar las máscaras y volver a entrenar.
 | `CUDA out of memory` al entrenar | Poca memoria de GPU | Bajar `train.batch_size` o usar un encoder más pequeño |
 
 ---
-
-## Licencia y créditos
-
-- **Código:** pendiente de definir (agrega un archivo `LICENSE` antes de publicar).
-- **Datos:** dacl10k, CC BY‑NC 4.0. No incluidos en el repositorio.
-
-Flotzinger, Rösch y Braml. *dacl10k: Benchmark for Semantic Bridge Damage Segmentation*. WACV 2024.
